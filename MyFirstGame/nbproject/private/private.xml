@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/huyviet/Documents/NetBeansProjects/MyFirstGame/src/myfirstgame/Menu.java</file>
-            <file>file:/C:/Users/huyviet/Documents/NetBeansProjects/MyFirstGame/src/myfirstgame/KeyInput.java</file>
-            <file>file:/C:/Users/huyviet/Documents/NetBeansProjects/MyFirstGame/src/myfirstgame/Bullet.java</file>
-            <file>file:/C:/Users/huyviet/Documents/NetBeansProjects/MyFirstGame/src/myfirstgame/Player.java</file>
-            <file>file:/C:/Users/huyviet/Documents/NetBeansProjects/MyFirstGame/src/myfirstgame/EnemyGenerator.java</file>
-            <file>file:/C:/Users/huyviet/Documents/NetBeansProjects/MyFirstGame/src/myfirstgame/Game.java</file>
+            <file>file:/home/huyviet1995/git/myProjects/MyFirstGame/src/myfirstgame/Game.java</file>
+            <file>file:/home/huyviet1995/git/myProjects/MyFirstGame/src/myfirstgame/Explosion.java</file>
+            <file>file:/home/huyviet1995/git/myProjects/MyFirstGame/src/myfirstgame/Menu.java</file>
         </group>
     </open-files>
 </project-private>

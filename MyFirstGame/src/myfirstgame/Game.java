@@ -26,11 +26,11 @@ public class Game extends Canvas implements Runnable {
     private EnemyGenerator enemyGenerator;
     private Menu menu;
     
-    public enum state {
+    public enum STATE {
         Menu,
         Game;
     };
-    public state gameState = state.Menu;
+    public STATE gameState = STATE.Menu;
     
     public Game() throws IOException {
         
@@ -39,11 +39,12 @@ public class Game extends Canvas implements Runnable {
         mouseInput = new MouseInput(objectHandler);
         healthBar = new HealthBar();
         enemyGenerator = new EnemyGenerator (objectHandler,healthBar);
-        menu = new Menu();
+        menu = new Menu(this);
         
         this.addKeyListener(new KeyInput(objectHandler));
         this.addMouseListener(mouseInput);
         this.addMouseMotionListener(mouseInput);
+        this.addMouseListener(menu);
         new Window (WIDTH, HEIGHT,"My first game", this);
 
         //add the player
@@ -111,11 +112,11 @@ public class Game extends Canvas implements Runnable {
     }
     
     public void tick() {
-        if (gameState==state.Game) {
+        if (gameState==STATE.Game) {
         objectHandler.tick();
         healthBar.tick();
         enemyGenerator.tick();
-        } else if (gameState==state.Menu) {
+        } else if (gameState==STATE.Menu) {
             menu.tick();
         }
     }
@@ -129,10 +130,10 @@ public class Game extends Canvas implements Runnable {
         Graphics g = bs.getDrawGraphics();
         //graphics drawing starts here
         paintComponent(g);
-        if (gameState == state.Game) {
+        if (gameState == STATE.Game) {
         objectHandler.render(g);
         healthBar.render(g);
-        } else if (gameState == state.Menu) {
+        } else if (gameState == STATE.Menu) {
             menu.render(g);
         }
         //graphics drawing ends here 
