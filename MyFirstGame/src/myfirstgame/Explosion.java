@@ -15,27 +15,28 @@ import java.awt.Rectangle;
  */
 public class Explosion extends ObjectController {
     private Color color;
-    private float[][] explosionLine = new float[4][4];
-    private int[] direction = {-3,-3,3,3};
-    public Explosion(float x, float y,Color color) {
+    private ObjectHandler objectHandler;
+    public Explosion(float x, float y,Color color,ObjectHandler objectHandler) {
         super(x, y);
         this.color = color;
         this.velX=1;
         this.velY=1;
+        this.objectHandler = objectHandler;
         //initialize all the line
      
     }
-    public void oneTick() {
-        
-    }
     
     public void tick() {
-        
+        velX =velX+1;
+        velY=velY+1;
+        if (velX==30 || velY==30) {
+            objectHandler.removeObject(this);
+        }
     }
 
     public void render(Graphics g) {
         g.setColor(this.color);
-        
+        g.drawOval((int)x,(int)y,(int)velX,(int)velY);
     }
     
     public Rectangle boundedArea() {

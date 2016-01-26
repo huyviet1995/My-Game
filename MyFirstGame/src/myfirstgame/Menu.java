@@ -29,6 +29,8 @@ public class Menu extends MouseAdapter {
         if (mouseOver(mx,my,Game.WIDTH/2-150,300,300,100)) {
             game.gameState = STATE.Game;
         }
+        
+        
     }
     public void mouseReleased(MouseEvent e) {
         
@@ -71,6 +73,11 @@ public class Menu extends MouseAdapter {
         g.setFont(f4);
         g.setColor(Color.red);
         g.drawString(play, Game.WIDTH/2-120,350);
+        
+        //Tutorial
+        g.setFont(f4);
+        g.setColor(Color.red);
+        g.drawString("Tutorial",Game.WIDTH/2-120,450);
         
         //set three menus of the game
         g.setColor(Color.white);

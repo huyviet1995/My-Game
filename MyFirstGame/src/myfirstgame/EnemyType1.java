@@ -34,6 +34,7 @@ public class EnemyType1 extends ObjectController {
             ObjectController object = objectHandler.objects.get(i);
             if (object instanceof Bullet) {
                 if (this.boundedArea().intersects(object.boundedArea())) {
+                    objectHandler.addObject(new Explosion(x,y,Color.red,objectHandler));
                     objectHandler.removeObject(object);
                     objectHandler.removeObject(this);
                 }
@@ -56,8 +57,9 @@ public class EnemyType1 extends ObjectController {
         //set the rotation of the mouse
         //add the trail for the object
         //objectHandler.addObject(new Trail(x,y,Color.red,25,25,0.1f,objectHandler));
-        this.isCollided();
+        
         }
+        this.isCollided();
         }
     
 

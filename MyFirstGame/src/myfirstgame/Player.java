@@ -68,7 +68,7 @@ public class Player extends ObjectController {
     
     public void render(Graphics g) {
         g.setColor(Color.white);
-        g.drawOval((int)x,(int)y,25,25);
+        g.fillOval((int)x,(int)y,25,25);
         //g.drawImage(scaleImage(50,50,"Image/triangle.jpg"),(int)x,(int)y,null);
     }
 
