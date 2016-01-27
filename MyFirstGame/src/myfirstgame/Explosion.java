@@ -27,9 +27,9 @@ public class Explosion extends ObjectController {
     }
     
     public void tick() {
-        velX =velX+1;
-        velY=velY+1;
-        if (velX==30 || velY==30) {
+        velX =velX+2;
+        velY=velY+2;
+        if (velX>=40 || velY>=40) {
             objectHandler.removeObject(this);
         }
     }

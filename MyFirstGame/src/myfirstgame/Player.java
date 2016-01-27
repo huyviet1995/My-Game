@@ -31,18 +31,28 @@ public class Player extends ObjectController {
     private MouseInput mouseInput;
     private int timer=10;
     private HealthBar healthBar;
-    public Player(float x, float y, ObjectHandler objectHandler,MouseInput mouseInput) throws IOException {
+    private int recoveryTime=100;
+    private int sparkleTime = 5;
+    
+    public Player(float x, float y, ObjectHandler objectHandler,MouseInput mouseInput, HealthBar healthBar) throws IOException {
         super(x, y);
         this.objectHandler = objectHandler;
         this.mouseInput = mouseInput;
+        this.healthBar = healthBar;
+        
         //mouseInput = new MouseInput(objectHandler);
     }
+    
 
     public void tick() {
         x=x+velX;
         y=y+velY;
         
+        if (recoveryTime >0) recoveryTime -- ;
+        if (sparkleTime>=0) sparkleTime --;
+        //System.out.println(recoveryTime);
         x=Game.clamp((int)x,0,Game.WIDTH-55);
+        
         y=Game.clamp ((int)y,0,Game.HEIGHT-80);
         if (mouseInput.holding) {
             timer --;
@@ -63,12 +73,13 @@ public class Player extends ObjectController {
         }
         this.isCollided();
     }
-
     
     
     public void render(Graphics g) {
+        
         g.setColor(Color.white);
         g.fillOval((int)x,(int)y,25,25);
+            
         //g.drawImage(scaleImage(50,50,"Image/triangle.jpg"),(int)x,(int)y,null);
     }
 
@@ -82,10 +93,17 @@ public class Player extends ObjectController {
             ObjectController object = objectHandler.objects.get(i);
             if (object instanceof EnemyType1) {
                 if (this.boundedArea().intersects(object.boundedArea()))
-                healthBar.HEALTH-=2;
+                    if (recoveryTime<=0) {
+                        recoveryTime = 100;
+                        healthBar.setLife(healthBar.getLife()-1);
+                        objectHandler.addObject(new Explosion(x,y,Color.blue,objectHandler));
+                    }
+                
             }
         }
     }
+
+    
 
     private Object ImgUtils() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

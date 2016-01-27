@@ -37,7 +37,7 @@ public class Game extends Canvas implements Runnable {
         //Initialize the objectHandler and add the keyInput 
         objectHandler = new ObjectHandler();
         mouseInput = new MouseInput(objectHandler);
-        healthBar = new HealthBar();
+        healthBar = new HealthBar(0,10,1);
         enemyGenerator = new EnemyGenerator (objectHandler,healthBar);
         menu = new Menu(this);
         
@@ -46,9 +46,10 @@ public class Game extends Canvas implements Runnable {
         this.addMouseMotionListener(mouseInput);
         this.addMouseListener(menu);
         new Window (WIDTH, HEIGHT,"My first game", this);
-
+        
+        
         //add the player
-        objectHandler.addObject(new Player(1000,1000, objectHandler,mouseInput));
+        objectHandler.addObject(new Player(1000,1000, objectHandler,mouseInput,healthBar));
         // add the objects
         objectHandler.addObject(new EnemyType1(20,20,objectHandler));
         

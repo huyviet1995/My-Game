@@ -31,7 +31,7 @@ public class EnemyGenerator {
             int random = (int)(Math.random()*960);
             int random2 = (int)(Math.random()*640);
             objectHandler.addObject(new EnemyType1(random,random2,objectHandler));
-            System.out.println(random+" "+ random2);
+            
         }
         
     }
