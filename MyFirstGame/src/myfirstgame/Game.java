@@ -57,12 +57,7 @@ public class Game extends Canvas implements Runnable {
         
         
         //add the player
-        if (gameState == STATE.Game) {
         objectHandler.addObject(new Player(1000,1000, objectHandler,mouseInput,healthBar, this));
-        
-        }
-        
-        
         //test code
         System.out.println(objectHandler.objects);
         
@@ -70,8 +65,10 @@ public class Game extends Canvas implements Runnable {
     
     public void reset() {
         for (int i = 0; i<objectHandler.objects.size();i++) {
+            if (!(objectHandler.objects.get(i) instanceof Player))
             objectHandler.removeObject(objectHandler.objects.get(i));
-            
+            healthBar.setLife(3);
+            healthBar.score(0);
         }
         
         
@@ -114,6 +111,7 @@ public class Game extends Canvas implements Runnable {
             if (running) {
                 this.render();
             }
+            
             frames++;
             //System.out.println("Hello World!");
             if (System.currentTimeMillis()-timer>1000) {
