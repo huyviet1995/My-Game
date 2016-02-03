@@ -45,7 +45,7 @@ public class Game extends Canvas implements Runnable {
         enemyGenerator = new EnemyGenerator (objectHandler,healthBar);
         menu = new Menu(this);
         tutorial = new Tutorial(this);
-        highScore = new HighScore(this);
+        highScore = new HighScore(this,healthBar);
         
         this.addKeyListener(new KeyInput(objectHandler));
         this.addMouseListener(mouseInput);
@@ -57,14 +57,23 @@ public class Game extends Canvas implements Runnable {
         
         
         //add the player
+        if (gameState == STATE.Game) {
         objectHandler.addObject(new Player(1000,1000, objectHandler,mouseInput,healthBar, this));
-        // add the objects
-        objectHandler.addObject(new EnemyType1(20,20,objectHandler));
         
+        }
         
         
         //test code
         System.out.println(objectHandler.objects);
+        
+    }
+    
+    public void reset() {
+        for (int i = 0; i<objectHandler.objects.size();i++) {
+            objectHandler.removeObject(objectHandler.objects.get(i));
+            
+        }
+        
         
     }
     
@@ -121,6 +130,7 @@ public class Game extends Canvas implements Runnable {
     }
     
     public void tick() {
+        
         if (gameState==STATE.Game) {
         objectHandler.tick();
         healthBar.tick();

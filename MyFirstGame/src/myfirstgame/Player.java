@@ -102,6 +102,7 @@ public class Player extends ObjectController {
                         objectHandler.addObject(new Explosion(x,y,Color.blue,objectHandler));
                         if (healthBar.getLife()==0) {
                             game.gameState = STATE.HighScore;
+                            game.reset();
                         }
                     }
                 

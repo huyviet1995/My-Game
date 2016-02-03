@@ -5,6 +5,7 @@
  */
 package myfirstgame;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
@@ -16,8 +17,10 @@ import java.awt.event.MouseEvent;
  */
 public class HighScore extends MouseAdapter {
     private Game game;
-    public HighScore(Game game) {
+    private HealthBar healthBar;
+    public HighScore(Game game,HealthBar healthBar) {
         this.game = game;
+        this.healthBar= healthBar;
     }
     public void mousePressed(MouseEvent e) {
         int mx = e.getX();
@@ -29,6 +32,8 @@ public class HighScore extends MouseAdapter {
         }
         }
     }
+    
+    
     
     public void mouseReleased(MouseEvent e) {
         
@@ -46,10 +51,13 @@ public class HighScore extends MouseAdapter {
         
     }
     public void render(Graphics g) {
-        //set the high score of the game
-        
-        
+        //set the high score of the game       
+        Font f1 = new Font("Liberation Mono",2,20);
         Font f3 = new Font("Liberation Mono",2,40);
+        g.setColor(Color.red);
+        g.setFont(f1);
+        g.drawString("HIGH SCORE:"+healthBar.getScore(),Game.WIDTH/2-70,300);
+        
         g.setFont(f3);
         g.drawRect(Game.WIDTH/2-150,500,300,100);
         g.drawString("BACK",Game.WIDTH/2-70,570);

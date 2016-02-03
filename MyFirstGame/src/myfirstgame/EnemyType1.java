@@ -18,9 +18,9 @@ public class EnemyType1 extends ObjectController {
     private ObjectController player;
     private ObjectHandler objectHandler;
     private int timer =100;
+    private HealthBar healthBar;
     
-    
-    public EnemyType1(int x, int y,ObjectHandler objectHandler) {
+    public EnemyType1(int x, int y,ObjectHandler objectHandler,HealthBar healthBar) {
         super(x,y);
         this.objectHandler = objectHandler;
         //this.tag = tag;
@@ -28,6 +28,7 @@ public class EnemyType1 extends ObjectController {
             if (tempObject instanceof Player) player = tempObject;
             break;
         }
+        this.healthBar = healthBar;
     }
     public void isCollided() {
         for (int i =0;i<objectHandler.objects.size();i++) {
@@ -37,6 +38,7 @@ public class EnemyType1 extends ObjectController {
                     objectHandler.addObject(new Explosion(x,y,Color.red,objectHandler));
                     objectHandler.removeObject(object);
                     objectHandler.removeObject(this);
+                    healthBar.score(healthBar.getScore()+100);
                 }
             }
         }

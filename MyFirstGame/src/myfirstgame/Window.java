@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Frame;
 
 import javax.swing.JFrame;
+import myfirstgame.Game.STATE;
 
 /**
  *
@@ -28,6 +29,7 @@ public class Window extends Canvas {
         frame.setResizable(false);
         frame.add(game);
         frame.setVisible(true);
+  
         game.start();
     }
 }

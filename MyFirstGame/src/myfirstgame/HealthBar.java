@@ -37,17 +37,7 @@ public class HealthBar {
         g.drawString("Life: " + life,10,30);
         
         g.drawString("Score: " + score, 10,50);
-        /*
-        g.setColor(Color.gray);
-        g.fillRect(15,15,200,32);
-        g.setColor(new Color(75, greenValue, 0));
-        g.fillRect(15,15, HEALTH*2,32);
-        g.setColor(Color.white);
-        g.drawRect(15,15, 200,32);
-        g.drawString("Score:"+score,10,64);
-        g.drawString("Level:"+level,10,84);*/
-        
-        
+       
     }
     
     public void score(int score) {
