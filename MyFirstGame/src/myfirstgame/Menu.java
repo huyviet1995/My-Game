@@ -29,6 +29,10 @@ public class Menu extends MouseAdapter {
         if (mouseOver(mx,my,Game.WIDTH/2-150,300,300,100)) {
             game.gameState = STATE.Game;
         }
+        if (mouseOver(mx,my,Game.WIDTH/2-150,400,300,100)) {
+            game.gameState = STATE.Tutorial;
+        }
+        
         
         
     }
@@ -78,7 +82,10 @@ public class Menu extends MouseAdapter {
         g.setFont(f4);
         g.setColor(Color.red);
         g.drawString("Tutorial",Game.WIDTH/2-120,450);
-        
+        //Exit
+        g.setFont(f4);
+        g.setColor(Color.red);
+        g.drawString("Exit game", Game.WIDTH/2-120,550);
         //set three menus of the game
         g.setColor(Color.white);
         g.drawRect(Game.WIDTH/2-150,300,300,100);

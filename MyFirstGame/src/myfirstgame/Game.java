@@ -25,10 +25,12 @@ public class Game extends Canvas implements Runnable {
     private HealthBar healthBar;
     private EnemyGenerator enemyGenerator;
     private Menu menu;
+    private Tutorial tutorial;
     
     public enum STATE {
         Menu,
-        Game;
+        Game,
+        Tutorial;
     };
     public STATE gameState = STATE.Menu;
     
@@ -40,6 +42,7 @@ public class Game extends Canvas implements Runnable {
         healthBar = new HealthBar(0,10,1);
         enemyGenerator = new EnemyGenerator (objectHandler,healthBar);
         menu = new Menu(this);
+        tutorial = new Tutorial(this);
         
         this.addKeyListener(new KeyInput(objectHandler));
         this.addMouseListener(mouseInput);
@@ -120,6 +123,9 @@ public class Game extends Canvas implements Runnable {
         } else if (gameState==STATE.Menu) {
             menu.tick();
         }
+        else if (gameState==STATE.Tutorial) {
+            tutorial.tick();
+        }
     }
     
     public void render() {
@@ -136,9 +142,11 @@ public class Game extends Canvas implements Runnable {
         healthBar.render(g);
         } else if (gameState == STATE.Menu) {
             menu.render(g);
-        }
+        } 
         //graphics drawing ends here 
-        
+        else if (gameState == STATE.Tutorial) {
+            tutorial.render(g);
+        }
         g.dispose();
         bs.show();
     }
