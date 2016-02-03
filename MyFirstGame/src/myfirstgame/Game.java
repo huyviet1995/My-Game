@@ -26,11 +26,13 @@ public class Game extends Canvas implements Runnable {
     private EnemyGenerator enemyGenerator;
     private Menu menu;
     private Tutorial tutorial;
+    private HighScore highScore;
     
     public enum STATE {
         Menu,
         Game,
-        Tutorial;
+        Tutorial,
+        HighScore;
     };
     public STATE gameState = STATE.Menu;
     
@@ -39,20 +41,23 @@ public class Game extends Canvas implements Runnable {
         //Initialize the objectHandler and add the keyInput 
         objectHandler = new ObjectHandler();
         mouseInput = new MouseInput(objectHandler);
-        healthBar = new HealthBar(0,10,1);
+        healthBar = new HealthBar(0,3,1);
         enemyGenerator = new EnemyGenerator (objectHandler,healthBar);
         menu = new Menu(this);
         tutorial = new Tutorial(this);
+        highScore = new HighScore(this);
         
         this.addKeyListener(new KeyInput(objectHandler));
         this.addMouseListener(mouseInput);
         this.addMouseMotionListener(mouseInput);
         this.addMouseListener(menu);
+        this.addMouseListener(tutorial);
+        this.addMouseListener(highScore);
         new Window (WIDTH, HEIGHT,"My first game", this);
         
         
         //add the player
-        objectHandler.addObject(new Player(1000,1000, objectHandler,mouseInput,healthBar));
+        objectHandler.addObject(new Player(1000,1000, objectHandler,mouseInput,healthBar, this));
         // add the objects
         objectHandler.addObject(new EnemyType1(20,20,objectHandler));
         
@@ -126,6 +131,9 @@ public class Game extends Canvas implements Runnable {
         else if (gameState==STATE.Tutorial) {
             tutorial.tick();
         }
+        else if (gameState==STATE.HighScore) {
+            highScore.tick();
+        }
     }
     
     public void render() {
@@ -146,6 +154,9 @@ public class Game extends Canvas implements Runnable {
         //graphics drawing ends here 
         else if (gameState == STATE.Tutorial) {
             tutorial.render(g);
+        }
+        else if (gameState==STATE.HighScore) {
+            highScore.render(g);
         }
         g.dispose();
         bs.show();

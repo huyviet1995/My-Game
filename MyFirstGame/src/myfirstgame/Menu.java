@@ -25,12 +25,14 @@ public class Menu extends MouseAdapter {
     public void mousePressed(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
-        System.out.println(mx+""+my);
+       
+        if (game.gameState == STATE.Menu) {
         if (mouseOver(mx,my,Game.WIDTH/2-150,300,300,100)) {
             game.gameState = STATE.Game;
         }
         if (mouseOver(mx,my,Game.WIDTH/2-150,400,300,100)) {
             game.gameState = STATE.Tutorial;
+        }
         }
         
         
@@ -44,8 +46,8 @@ public class Menu extends MouseAdapter {
     }
     
     private boolean mouseOver(int mx, int my, int x,int y, int width, int height) {
-        if (mx > x && mx < x+ width )
-            if (my>y && my <y+height ) {
+        if (mx > x && mx < x+ width)
+            if (my>y && my <y+height) {
                 return true;
             }
         return false;

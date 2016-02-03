@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import myfirstgame.Game.STATE;
 
 /**
  *
@@ -33,12 +34,14 @@ public class Player extends ObjectController {
     private HealthBar healthBar;
     private int recoveryTime=100;
     private int sparkleTime = 5;
+    private Game game;
     
-    public Player(float x, float y, ObjectHandler objectHandler,MouseInput mouseInput, HealthBar healthBar) throws IOException {
+    public Player(float x, float y, ObjectHandler objectHandler,MouseInput mouseInput, HealthBar healthBar, Game game) throws IOException {
         super(x, y);
         this.objectHandler = objectHandler;
         this.mouseInput = mouseInput;
         this.healthBar = healthBar;
+        this.game = game;
         
         //mouseInput = new MouseInput(objectHandler);
     }
@@ -97,6 +100,9 @@ public class Player extends ObjectController {
                         recoveryTime = 100;
                         healthBar.setLife(healthBar.getLife()-1);
                         objectHandler.addObject(new Explosion(x,y,Color.blue,objectHandler));
+                        if (healthBar.getLife()==0) {
+                            game.gameState = STATE.HighScore;
+                        }
                     }
                 
             }

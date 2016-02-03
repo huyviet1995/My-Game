@@ -5,34 +5,30 @@
  */
 package myfirstgame;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import myfirstgame.Game.STATE;
 
 /**
  *
  * @author huyviet1995
  */
-public class Tutorial extends MouseAdapter{
+public class HighScore extends MouseAdapter {
     private Game game;
-    public Tutorial(Game game) {
+    public HighScore(Game game) {
         this.game = game;
     }
-    
     public void mousePressed(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
         
-        if (game.gameState == STATE.Tutorial) {
+        if (game.gameState == Game.STATE.HighScore) {
         if (mouseOver(mx,my,Game.WIDTH/2-150,500,300,100)) {
-            game.gameState=STATE.Menu;
+            game.gameState=Game.STATE.Menu;
         }
         }
     }
-    
     
     public void mouseReleased(MouseEvent e) {
         
@@ -49,26 +45,15 @@ public class Tutorial extends MouseAdapter{
     public void tick() {
         
     }
-    
     public void render(Graphics g) {
-        Font f1 = new Font("Liberation Mono",1,40);
-        Font f2 = new Font("Liberation Mono",1,20);
+        //set the high score of the game
+        
+        
         Font f3 = new Font("Liberation Mono",2,40);
-        String intro = new String("Welcome to the 2D shooting games");
-    
-        
-        g.setFont(f1);
-        g.setColor(Color.red);
-        g.drawString(intro,30,150);
-        
-        g.setFont(f2);
-        g.drawString("The rules of this game are very simple, all you have to do is",30,250);
-        g.drawString("Use the four keys WASD to move the player around",30,300);
-        g.drawString("Use the mouse to aim at the enemies",30,350);
-        g.drawString("Try to survive before losing all your give lives",30,400);
-        
         g.setFont(f3);
         g.drawRect(Game.WIDTH/2-150,500,300,100);
         g.drawString("BACK",Game.WIDTH/2-70,570);
     }
+    
+    
 }
