@@ -5,9 +5,7 @@
         <group>
             <file>file:/home/huyviet1995/git/myProjects/MyFirstGame/src/myfirstgame/Game.java</file>
             <file>file:/home/huyviet1995/git/myProjects/MyFirstGame/src/myfirstgame/Window.java</file>
-            <file>file:/home/huyviet1995/git/myProjects/MyFirstGame/src/myfirstgame/Tutorial.java</file>
-            <file>file:/home/huyviet1995/git/myProjects/MyFirstGame/src/myfirstgame/Menu.java</file>
-            <file>file:/home/huyviet1995/git/myProjects/MyFirstGame/src/myfirstgame/HealthBar.java</file>
+            <file>file:/home/huyviet1995/git/myProjects/MyFirstGame/src/myfirstgame/ObjectController.java</file>
         </group>
     </open-files>
 </project-private>
